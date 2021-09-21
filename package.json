@@ -1,5 +1,5 @@
 {
-  "name": "sl-warehouse",
+  "name": "character-creator",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
