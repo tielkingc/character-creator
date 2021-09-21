@@ -1,0 +1,42 @@
+{
+  "name": "sl-warehouse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "dependencies": {
+    "apollo-link": "^1.2.14",
+    "apollo-link-error": "^1.1.13",
+    "bootstrap": "^5.1.0",
+    "emailjs-com": "^3.2.0",
+    "install": "^0.13.0",
+    "nodemon": "^2.0.12",
+    "npm": "^7.22.0",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.0.0-beta.6",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^4.0.3",
+    "web-vitals": "^1.1.2"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.1"
+  },
+  "scripts": {
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "start:dev": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "watch": "nodemon",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esherrow/SL-warehouse.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/esherrow/SL-warehouse/issues"
+  },
+  "homepage": "https://github.com/esherrow/SL-warehouse#readme"
+}
