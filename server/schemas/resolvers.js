@@ -1,5 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
+const bcrypt = require('bcrypt');
 
 const resolvers = {
     Query: {
@@ -18,6 +19,17 @@ const resolvers = {
             const user = await User.create(args);
 
             return user;
+        },
+
+        editUser: async (parents, args) => {
+            args.password = await bcrypt.hash(args.password, 10)
+
+            const user = await User.findOneAndUpdate(
+                { _id: args._id },
+                { first_name: args.first_name, last_name: args.last_name, username: args.username, password: args.password },
+                { new: true }
+            )
+            return user
         },
         
         login: async (parents, { username, password }) => {

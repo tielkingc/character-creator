@@ -6,7 +6,8 @@ const typeDefs = gql `
         first_name: String,
         last_name: String,
         username: String,
-        password: String
+        password: String,
+        account_type: String
     }
 
     type Query {
@@ -19,10 +20,20 @@ const typeDefs = gql `
             first_name: String!,
             last_name: String!,
             username: String!,
-            password: String!
+            password: String!,
+            account_type: String!
             ): User
 
         login(username: String!, password: String!): User
+
+        editUser(
+            _id: ID!,
+            first_name: String,
+            last_name: String,
+            username: String,
+            password: String,
+            account_type: String
+        ): User
     }
 `;
 

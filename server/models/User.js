@@ -31,7 +31,12 @@ const userSchema = new Schema(
         characters: {
             type: Schema.Types.ObjectId,
             ref: 'Character'
-        } 
+        },
+
+        account_type: {
+            type: String,
+            required: true
+        }
     }
 )
 
