@@ -31,6 +31,11 @@ const resolvers = {
             )
             return user
         },
+
+        deleteUser: async (parents, args) => {
+            const user = await User.findOneAndDelete({ _id: args._id })
+            return user
+        },
         
         login: async (parents, { username, password }) => {
             const user = await User.findOne({ username })

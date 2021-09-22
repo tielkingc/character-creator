@@ -34,6 +34,8 @@ const typeDefs = gql `
             password: String,
             account_type: String
         ): User
+
+        deleteUser(_id: ID!): User 
     }
 `;
 
