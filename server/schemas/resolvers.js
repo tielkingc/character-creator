@@ -1,6 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
 const bcrypt = require('bcrypt');
+const { signToken } = require('../utils/auth')
 
 const resolvers = {
     Query: {
@@ -51,7 +52,27 @@ const resolvers = {
             }
 
             console.log(`${username} is logged in!`);
-            return user;
+
+            const token = signToken(user)
+
+            return { token, user };
+        },
+
+        addCharacter: async (parents, args, context) => {
+            console.log(context.user)
+            if (context.user) {
+                const character = await Character.create({ ...args, username: context.user.username });
+
+                await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { characters: character._id } },
+                    { new: true }
+                );
+
+                return character
+            }
+
+            throw new AuthenticationError('You need to be logged in!');
         }
     }
 }
