@@ -19,42 +19,40 @@ const typeDefs = gql `
         confirmPassword: String!
     }
 
+    input BaseStats {
+        name: String
+        strength: Int
+        dexterity: Int
+        constitution: Int
+        intelligence: Int
+        wisdom: Int
+        charisma: Int
+    }
+
     type Character {
         _id: ID,
         name: String,
-        created_By: [User]
-    }
-
-    type Auth {
-        token: ID!
-        user: User
+        username: String,
+        createdAt: String
+        strength: Int
+        dexterity: Int
+        constitution: Int
+        intelligence: Int
+        wisdom: Int
+        charisma: Int
     }
 
     type Query {
         users: [User],
         user(username: String!): User
-        characters: [Character]
+        getCharacters: [Character]
     }
 
     type Mutation {
         register(registerInput: RegisterInput): User!
-
         login(username: String!, password: String!): User
-
-        editUser(
-            _id: ID!,
-            first_name: String,
-            last_name: String,
-            username: String,
-            password: String,
-            account_type: String
-        ): User
-
         deleteUser(userId: ID!): String!
-        
-        addCharacter(
-            name: String
-        ): Character
+        addManualCharacter(baseStats: BaseStats): Character!
     }
 `;
 

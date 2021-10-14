@@ -1,7 +1,8 @@
 const { ApolloServer } = require('apollo-server');
 const mongoose = require('mongoose');
 
-const { typeDefs, resolvers } = require('./schemas');
+const typeDefs = require('./schemas/typeDefs');
+const resolvers = require('./schemas/resolvers');
 const { MONGODB } = require('./config');
 
 const server = new ApolloServer({

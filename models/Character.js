@@ -1,18 +1,19 @@
 const { Schema, model } = require('mongoose');
 
-const characterSchema = new Schema(
-    {
-        name: {
-            type: String
-        },
+const characterSchema = new Schema({
+    name: String,
+    strength: Number,
+    dexterity: Number,
+    constitution: Number,
+    intelligence: Number,
+    wisdom: Number,
+    charisma: Number,
+    username: String,
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+    },
+    createdAt: String
+})
 
-        created_By: {
-            type: Schema.Types.ObjectId,
-            ref: 'User'
-        }
-    }
-)
-
-const Character = model('Character', characterSchema);
-
-module.exports = Character;
+module.exports = model('Character', characterSchema);
