@@ -1,42 +1,25 @@
 {
-  "name": "character-creator",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "server/server.js",
-  "dependencies": {
-    "apollo-link": "^1.2.14",
-    "apollo-link-error": "^1.1.13",
-    "bootstrap": "^5.1.0",
-    "emailjs-com": "^3.2.0",
-    "install": "^0.13.0",
-    "nodemon": "^2.0.12",
-    "npm": "^7.22.0",
-    "react": "^17.0.2",
-    "react-bootstrap": "^2.0.0-beta.6",
-    "react-dom": "^17.0.2",
-    "react-scripts": "^4.0.3",
-    "web-vitals": "^1.1.2"
-  },
-  "devDependencies": {
-    "concurrently": "^6.2.1"
-  },
+  "main": "server.js",
   "scripts": {
-    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-    "start:dev": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-    "install": "cd server && npm i && cd ../client && npm i",
-    "watch": "nodemon",
-    "seed": "cd server && npm run seed",
-    "build": "cd client && npm run build"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node server",
+    "start": "nodemon server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/esherrow/SL-warehouse.git"
-  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/esherrow/SL-warehouse/issues"
-  },
-  "homepage": "https://github.com/esherrow/SL-warehouse#readme"
+  "dependencies": {
+    "apollo-server": "^3.3.0",
+    "bcryptjs": "^2.4.3",
+    "graphql": "^15.6.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.9",
+    "nodemon": "^2.0.13",
+    "react-router-dom": "^5.3.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.4"
+  }
 }
