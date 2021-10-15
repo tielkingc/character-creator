@@ -53,6 +53,7 @@ const typeDefs = gql `
         login(username: String!, password: String!): User
         deleteUser(userId: ID!): String!
         addManualCharacter(baseStats: BaseStats): Character!
+        deleteCharacter(characterId: ID!): String!
     }
 `;
 

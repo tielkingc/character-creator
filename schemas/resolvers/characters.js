@@ -1,6 +1,6 @@
 const checkAuth = require('../../utils/check-auth');
-const { validateRegisterInput, validateLoginInput } = require('../../utils/validators');
 const Character = require('../../models/Character');
+const { AuthenticationError } = require('apollo-server');
 
 module.exports = {
 
@@ -30,6 +30,22 @@ module.exports = {
 
             const character = await newCharacter.save();
             return character;
+        },
+
+        async deleteCharacter(_, { characterId }, context) {
+            const user = checkAuth(context);
+
+            try {
+                const character = await Character.findById(characterId);
+                if (user.username === character.username) {
+                    await character.delete();
+                    return 'Character has been deleted';
+                } else {
+                    throw new AuthenticationError('Action not allowed')
+                }
+            } catch (err) {
+                throw new Error(err);
+            }
         }
     }
 }
