@@ -14,6 +14,19 @@ module.exports = {
             } catch (err) {
                 throw new Error(err);
             }
+        },
+
+        async getCharacter(_, { characterId }) {
+            const character = await Character.findById(characterId);
+            try {
+                if (character) {
+                    return character;
+                } else {
+                    throw new Error('Character not found!');
+                }
+            } catch (err) {
+                throw new Error(err);
+            }
         }
     },
 
