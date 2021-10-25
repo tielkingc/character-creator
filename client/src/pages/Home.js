@@ -30,7 +30,9 @@ function Home() {
 const FETCH_CHARACTERS_QUERY = gql `
     {
         getCharacters{
-            _id name createdAt username strength dexterity constitution intelligence wisdom charisma
+            _id name createdAt username strength dexterity 
+            constitution intelligence wisdom charisma level
+            characterClass race
         }
     }
 `

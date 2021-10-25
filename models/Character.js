@@ -13,7 +13,10 @@ const characterSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users'
     },
-    createdAt: String
+    createdAt: String,
+    race: String,
+    characterClass: String,
+    level: Number
 })
 
 module.exports = model('Character', characterSchema);

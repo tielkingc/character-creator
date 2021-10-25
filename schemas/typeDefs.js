@@ -40,6 +40,9 @@ const typeDefs = gql `
         intelligence: Int
         wisdom: Int
         charisma: Int
+        characterClass: String
+        race: String
+        level: Int
     }
 
     type Query {
