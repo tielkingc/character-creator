@@ -1,44 +1,26 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { ApolloClient, InMemoryCache,  ApolloProvider } from '@apollo/client';
-// import decode from 'jwt-decode';
-import Nav from './components/Nav';
-import SignIn from './pages/Login';
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Container } from 'semantic-ui-react'
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import MenuBar from './components/MenuBar';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register'
 
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
-  integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
-  crossorigin="anonymous"
-/>
-
-const client = new ApolloClient({
-  request: (operation) => {    
-    const token = localStorage.getItem('id_token')
-    operation.setContext({
-      headers: {
-        authorization: token ? `Bearer ${token}` : ''
-      }
-    })
-  },
-  cache: new InMemoryCache(),
-  uri: "/graphql"
-});
+import 'semantic-ui-css/semantic.min.css'
+import './App.css';
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <div>
-          <Nav />
-            <Switch>
-              <Route exact path="/signin" component={SignIn} />
-            </Switch>
-        </div>
-      </Router>
-    </ApolloProvider>
+    <Router>
+      <Container>
+        <MenuBar />
+        <Route exact path='/' component={Home} />
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/register' component={Register} />
+      </Container>
+    </Router>
   );
 }
 
-export default App;
+export default App; 
